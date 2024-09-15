@@ -1,0 +1,226 @@
+# move to bins
+#alias mount-henry='sudo mount -t cifs -o user=guest,pass=guest //HENRY/public /mnt/henry'
+#alias mount-perten='sudo mount -t cifs -o user=ddremote,pass=tomisawesome,file_mode=0777,dir_mode=0777       //10.128.20.38/Users /mnt/perten'
+
+# Silenced macro
+# Runs the command in the background, with absolutely zero output.
+silenced() {
+    "$@" &> /dev/null &;
+}
+
+function kuberun {
+    [[ $# -lt 2 ]] && echo "Invalid number of arguments, [SERVICE_NAME] [IMAGE_NAME] [...COMMAND]"; return 1;
+
+    SERVICE_NAME=$1
+    IMAGE_NAME=$2
+    shift 2;
+    kubectl run $SERVICE_NAME --image=$IMAGE_NAME --restart=Never --quiet -i --rm -- "$@"
+}
+
+function gnew {
+    git add . && git stash && git checkout master && git checkout -b $1 && git stash pop
+}
+
+function gcamp {
+   git add . && \
+   git commit -am "$1" && \
+   git push
+}
+
+# Stage all files, commit them with a message, and then push
+gcmp () {
+  git add . && git commit -m "$@" && git push
+}
+
+# new k get ns macro
+alias kgns="k get ns"
+alias k='kubectl'
+# alias kgc='kubectl get context'
+# alias ku='kubectl use-context'
+
+# dont really use exa any more, but default its display a bit better:
+alias exa="exa -l --git"
+
+#vim becomes nvim, quick aliases from v to vim
+alias v="nvim"
+alias vim="v"
+alias vi="v"
+
+#neovim vimdiff
+alias vimdiff='nvim -d'
+
+#make sure nvm is our editor (probably not needed with aliasing up above)
+export EDITOR=code
+
+# alias diffs-from-master="git --no-pager log --no-merges master.. "
+# alias diffs-from-master-count="diffs-from-master | grep commit | wc -l"
+# alias diffs-from-master="git --no-pager log --no-merges master.. "
+# alias diffs-from-master-count="diffs-from-master | grep commit | wc -l"
+alias gfm='gco main && gf && gl'
+alias gfrb='gfo $(git_main_branch):$(git_main_branch) && grb origin/$(git_main_branch)'
+
+alias theme='alacritty-themes'
+
+alias web='gh pr view --web'
+alias dc='docker-compose'
+
+#yarn shortcuts
+alias yys='yarn && yarn start'
+alias yyb='yarn && yarn build'
+alias push='yarn build && yalc push'
+alias ywba='ENABLE_BUNDLE_ANALYZER=true yarn start'
+alias yyd='yarn && yarn build && yarn dev'
+alias yd='yarn && yarn dev'
+
+#make
+alias maked='make dev'
+alias proxydb='make db-proxy'
+
+#pnpm shortcuts
+alias p='pnpm'
+alias pi='p i'
+alias pl='p lint'
+
+alias sz='source ~/.zshrc'
+
+## C2FO specific
+## see https://honeycomb.jira.com/wiki/spaces/ENG/pages/1083408420/C2FO+Mono+Repo+Documentation for more info
+# start app in watch mode
+# psa() {
+#   pnpm -F @c2fo/$1 start
+# }
+# # test app 
+# pt() {
+#   pnpm -F @c2fo/$1 test "${@:2}"
+# }
+# # test:watch app 
+# ptw() {
+#   pnpm -F @c2fo/$1 test:watch "${@:2}"
+# }
+# pb() {
+#   # todo add check if = "shim" then make it "early-pay-shim"
+#   pnpm -F @c2fo/$1... build
+# }
+# # Install AND build AND run
+# piba() {
+#   p i
+#   pb $1
+#   psa $1
+# }
+# # run playwright
+# pp() {
+#   pnpm -F @c2fo/$1 playwright "${@:2}"
+# }
+# # run plawright for enterprise-ui specifically
+# ppent() {
+#   pnpm -F @c2fo/enterprise-ui playwright "${@:1}"
+# }
+
+# alias pssep='pnpm -F early-pay-ui start:fss'
+# # start early-pay-api targeting FSS
+# alias pssepa='HEALTHCHECK_APP_NAME="request-api-local-jsb" \
+#               C2FO_NEST_AUTH_SERVICE_URL=https://fss-auth.c2fo.com \
+#               GATEWAY_URL=https://fss-gateway.c2fo.com \
+#               PUBLIC_API_URL=https://fss-gateway.c2fo.com/api/public/graphql \
+#               PUBLIC_API_APPLICATION_AUTH_TOKEN="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwYXlsb2FkIjp7ImFwcGxpY2F0aW9uIjp7Im5hbWUiOiJyZXF1ZXN0LWFwaSIsImtleSI6IkVHRUVJQUhYc0xTWmNWdlZiT0NPayIsInV1aWQiOiI4OTEzNzg0Ny01N2MwLTQwZDEtYTRkOS00NDc1NTU2YTZmYzEiLCJhcHBsaWNhdGlvbktleVNlY3JldFV1aWQiOiIxNTkwMDRlMS0yMTZiLTExZWMtYWI3Ni00ZmY5Mjc3ODBlMDgiLCJmZWF0dXJlcyI6W119LCJ0eXBlIjoiYXBwbGljYXRpb25fYXV0aCJ9LCJpYXQiOjE2MzI5NTA0MzQsImV4cCI6MTY0ODUwMjQzNCwiYXVkIjpbIioiXSwiaXNzIjoiYzJmby1hdXRoIn0.6zlQoQ3W3Fwpdg2OI364mbb6Sa6Lny2IaBAj1FfQjpU" \
+#               REQUEST_DB_HOST="early-pay-request-api-fss.cluster-cuaaknglbk8v.us-west-2.rds.amazonaws.com" \
+#               REQUEST_DB_NAME="earlypayrequestapi" \
+#               REQUEST_DB_PASS="vOFVzI54&!Hl7oX8FO" \
+#               REQUEST_DB_PORT=5432 \
+#               REQUEST_DB_USER=earlypayrequestapi \
+#               pnpm --filter "@c2fo/early-pay-request-api" start'
+# alias psent='piba enterprise-ui'
+# start backing apps
+# psb() {
+#   # no argument, start generic backing-apps
+#   if [ -z "$1" ]
+#   then
+#     pnpm run start:backing-apps
+#   else
+#     # argument provided, start specific
+#     pnpm -F $1 run start:backing-apps
+#   fi
+# }
+# start early-pay-ui specifically
+# alias psep='pnpm -F @c2fo/early-pay-ui start'
+# start early-pay-shim specifically
+# use flag -d to start with dev auth
+# pshim() {
+#   # Check for Dev Auth flag
+#   if [[ "$1" == "-d" ]];
+#   then
+#   echo "Starting shim with dev auth..."
+#     command="DEV_AUTH=true "
+#   fi
+#   # Base command
+#   command+='HEALTHCHECK_APP_NAME="early-pay-shim-api-jsb" \
+#             DB_CONNECTION_NAMES=fss \
+#             FSS_DB_USER="pollenadmin" \
+#             FSS_DB_PASS="su!4you11aaAAaa" \
+#             FSS_DB_LOGGING=false \
+#             FSS_DB_HOST="fss-db.c2fo.com" \
+#             FSS_BASE_URL="https://fss-gateway.c2fo.com/" \
+#             PUBLIC_API_APPLICATION_AUTH_TOKEN="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwYXlsb2FkIjp7ImFwcGxpY2F0aW9uIjp7Im5hbWUiOiJyZXF1ZXN0LWFwaSIsImtleSI6IkVHRUVJQUhYc0xTWmNWdlZiT0NPayIsInV1aWQiOiI4OTEzNzg0Ny01N2MwLTQwZDEtYTRkOS00NDc1NTU2YTZmYzEiLCJhcHBsaWNhdGlvbktleVNlY3JldFV1aWQiOiIxNTkwMDRlMS0yMTZiLTExZWMtYWI3Ni00ZmY5Mjc3ODBlMDgiLCJmZWF0dXJlcyI6W119LCJ0eXBlIjoiYXBwbGljYXRpb25fYXV0aCJ9LCJpYXQiOjE2MzI5NTA0MzQsImV4cCI6MTY0ODUwMjQzNCwiYXVkIjpbIioiXSwiaXNzIjoiYzJmby1hdXRoIn0.6zlQoQ3W3Fwpdg2OI364mbb6Sa6Lny2IaBAj1FfQjpU" \
+#             PUBLIC_API_URL="https://fss-gateway.c2fo.com/api/public/graphql" \
+#             C2FO_NEST_AUTH_SERVICE_URL=https://fss-auth.c2fo.com \
+#             C2FO_NEST_AUTH_SERVICE_SECRET="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwYXlsb2FkIjp7ImFwcGxpY2F0aW9uIjp7Im5hbWUiOiJjdXN0b21lci1hcGkiLCJrZXkiOiI2OWoxTXlvdE1GSnpHRjZSQ0Y4R0ZrIiwidXVpZCI6IjFlNzdmNTY2LTQ2ZDYtNGQ5MS1hNGJjLWM2ZTQ3NTA2MDJmNCIsImFwcGxpY2F0aW9uS2V5U2VjcmV0VXVpZCI6ImNhMTMxM2IwLWJjMzEtMTFlYy05MWEyLTM3MmQ4OGJhYzk3YSIsImZlYXR1cmVzIjpbXX0sInR5cGUiOiJhcHBsaWNhdGlvbl9hdXRoIn0sImlhdCI6MTY0OTk2ODI1NywiZXhwIjoxNjY1NTIwMjU3LCJhdWQiOlsiKiJdLCJpc3MiOiJjMmZvLWF1dGgifQ.ZbNsSQUYd5mDHMYr9O6QLoS6YqqRGEyJxKurgs_MoxM" \
+#             FSS_DB_IDLE_SOCKET_TIMEOUT=10000 \
+#             HTTP_SERVICE_NAMES=fss \
+#             FSS_BASE_URL="https://fss-gateway.c2fo.com/" \
+#             pnpm -F @c2fo/early-pay-shim-api start:debug'
+#   # run it
+#   eval $command
+# }
+
+# alias shim='HEALTHCHECK_APP_NAME="early-pay-shim-api-jsb" \
+            # DB_CONNECTION_NAMES=fss \
+            # FSS_DB_USER="pollenadmin" \
+            # FSS_DB_PASS="su!4you11aaAAaa" \
+            # FSS_DB_LOGGING=false \
+            # FSS_DB_HOST="fss-db.c2fo.com" \
+            # FSS_BASE_URL="https://fss-gateway.c2fo.com/" \
+            # PUBLIC_API_APPLICATION_AUTH_TOKEN="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwYXlsb2FkIjp7ImFwcGxpY2F0aW9uIjp7Im5hbWUiOiJyZXF1ZXN0LWFwaSIsImtleSI6IkVHRUVJQUhYc0xTWmNWdlZiT0NPayIsInV1aWQiOiI4OTEzNzg0Ny01N2MwLTQwZDEtYTRkOS00NDc1NTU2YTZmYzEiLCJhcHBsaWNhdGlvbktleVNlY3JldFV1aWQiOiIxNTkwMDRlMS0yMTZiLTExZWMtYWI3Ni00ZmY5Mjc3ODBlMDgiLCJmZWF0dXJlcyI6W119LCJ0eXBlIjoiYXBwbGljYXRpb25fYXV0aCJ9LCJpYXQiOjE2MzI5NTA0MzQsImV4cCI6MTY0ODUwMjQzNCwiYXVkIjpbIioiXSwiaXNzIjoiYzJmby1hdXRoIn0.6zlQoQ3W3Fwpdg2OI364mbb6Sa6Lny2IaBAj1FfQjpU" \
+            # PUBLIC_API_URL="https://fss-gateway.c2fo.com/api/public/graphql" \
+            # C2FO_NEST_AUTH_SERVICE_URL=https://fss-auth.c2fo.com \
+            # C2FO_NEST_AUTH_SERVICE_SECRET="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwYXlsb2FkIjp7ImFwcGxpY2F0aW9uIjp7Im5hbWUiOiJjdXN0b21lci1hcGkiLCJrZXkiOiI2OWoxTXlvdE1GSnpHRjZSQ0Y4R0ZrIiwidXVpZCI6IjFlNzdmNTY2LTQ2ZDYtNGQ5MS1hNGJjLWM2ZTQ3NTA2MDJmNCIsImFwcGxpY2F0aW9uS2V5U2VjcmV0VXVpZCI6ImNhMTMxM2IwLWJjMzEtMTFlYy05MWEyLTM3MmQ4OGJhYzk3YSIsImZlYXR1cmVzIjpbXX0sInR5cGUiOiJhcHBsaWNhdGlvbl9hdXRoIn0sImlhdCI6MTY0OTk2ODI1NywiZXhwIjoxNjY1NTIwMjU3LCJhdWQiOlsiKiJdLCJpc3MiOiJjMmZvLWF1dGgifQ.ZbNsSQUYd5mDHMYr9O6QLoS6YqqRGEyJxKurgs_MoxM" \
+            # FSS_DB_IDLE_SOCKET_TIMEOUT=10000 \
+            # HTTP_SERVICE_NAMES=fss \
+            # FSS_BASE_URL="https://fss-gateway.c2fo.com/" \
+            # DEV_AUTH=true \
+            # pnpm -F @c2fo/early-pay-shim start:debug'
+# alias shimnodev='HEALTHCHECK_APP_NAME="early-pay-shim-api-jsb" \
+#             DB_CONNECTION_NAMES=fss \
+#             FSS_DB_USER="pollenadmin" \
+#             FSS_DB_PASS="su!4you11aaAAaa" \
+#             FSS_DB_LOGGING=false \
+#             FSS_DB_HOST="fss-db.c2fo.com" \
+#             FSS_BASE_URL="https://fss-gateway.c2fo.com/" \
+#             PUBLIC_API_APPLICATION_AUTH_TOKEN="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwYXlsb2FkIjp7ImFwcGxpY2F0aW9uIjp7Im5hbWUiOiJyZXF1ZXN0LWFwaSIsImtleSI6IkVHRUVJQUhYc0xTWmNWdlZiT0NPayIsInV1aWQiOiI4OTEzNzg0Ny01N2MwLTQwZDEtYTRkOS00NDc1NTU2YTZmYzEiLCJhcHBsaWNhdGlvbktleVNlY3JldFV1aWQiOiIxNTkwMDRlMS0yMTZiLTExZWMtYWI3Ni00ZmY5Mjc3ODBlMDgiLCJmZWF0dXJlcyI6W119LCJ0eXBlIjoiYXBwbGljYXRpb25fYXV0aCJ9LCJpYXQiOjE2MzI5NTA0MzQsImV4cCI6MTY0ODUwMjQzNCwiYXVkIjpbIioiXSwiaXNzIjoiYzJmby1hdXRoIn0.6zlQoQ3W3Fwpdg2OI364mbb6Sa6Lny2IaBAj1FfQjpU" \
+#             PUBLIC_API_URL="https://fss-gateway.c2fo.com/api/public/graphql" \
+#             C2FO_NEST_AUTH_SERVICE_URL=https://fss-auth.c2fo.com \
+#             C2FO_NEST_AUTH_SERVICE_SECRET="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwYXlsb2FkIjp7ImFwcGxpY2F0aW9uIjp7Im5hbWUiOiJjdXN0b21lci1hcGkiLCJrZXkiOiI2OWoxTXlvdE1GSnpHRjZSQ0Y4R0ZrIiwidXVpZCI6IjFlNzdmNTY2LTQ2ZDYtNGQ5MS1hNGJjLWM2ZTQ3NTA2MDJmNCIsImFwcGxpY2F0aW9uS2V5U2VjcmV0VXVpZCI6ImNhMTMxM2IwLWJjMzEtMTFlYy05MWEyLTM3MmQ4OGJhYzk3YSIsImZlYXR1cmVzIjpbXX0sInR5cGUiOiJhcHBsaWNhdGlvbl9hdXRoIn0sImlhdCI6MTY0OTk2ODI1NywiZXhwIjoxNjY1NTIwMjU3LCJhdWQiOlsiKiJdLCJpc3MiOiJjMmZvLWF1dGgifQ.ZbNsSQUYd5mDHMYr9O6QLoS6YqqRGEyJxKurgs_MoxM" \
+#             FSS_DB_IDLE_SOCKET_TIMEOUT=10000 \
+#             HTTP_SERVICE_NAMES=fss \
+#             FSS_BASE_URL="https://fss-gateway.c2fo.com/" \
+#             pnpm -F @c2fo/early-pay-shim start:debug'
+
+# run migrations
+# pm () {
+#   pnpm -F @c2fo/$1 build
+#   pnpm -F @c2fo/$1 run migration:run
+# }
+# alias phx='pnpm phoenix:up'
+# alias mono='code ~/workspace/mono'
+
+# DB Proxies
+# alias proxyrequestdb='kubectl-proxydb early-pay-request-api-production.cluster-cuaaknglbk8v.us-west-2.rds.amazonaws.com 5489:5432'
+# alias proxycustomerdb='kubectl-proxydb customer-production.cluster-cuaaknglbk8v.us-west-2.rds.amazonaws.com 5490:5432'
+# alias proxyinvoicedb='kubectl-proxydb early-pay-invoice-api-prod.cluster-cuaaknglbk8v.us-west-2.rds.amazonaws.com 5491:5432'
+# alias proxytransactiondb='kubectl-proxydb early-pay-transaction-api-production.cluster-cuaaknglbk8v.us-west-2.rds.amazonaws.com 5492:5432'
+
+alias cask="brew install --cask $@"
+
+
+# Arch
+alias yayl="pacman -Qs" # yay list
+alias yaylist="yayl"
