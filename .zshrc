@@ -111,8 +111,13 @@ export EDITOR="$VISUAL"
 
 # configure browser
 # TODO - Allow to be configurable on darwin/osx?
-export BROWSER="firefox"
+#export BROWSER="firefox"
+export BROWSER="zen-alpha"
 export PATH=$PATH:/Applications/Firefox.app/Contents/MacOS/firefox-bin
+# run this if it stops opening links correctly
+#$ xdg-mime default zen-alpha.desktop x-scheme-handler/https x-scheme-handler/http
+# and this can check the default
+#$ xdg-settings get default-web-browser 
 
 # add krew
 export PATH="${KREW_ROOT:-$HOME/.krew}/bin:$PATH"

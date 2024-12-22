@@ -224,3 +224,4 @@ alias cask="brew install --cask $@"
 # Arch
 alias yayl="pacman -Qs" # yay list
 alias yaylist="yayl"
+alias wofi="wofi --show drun"
