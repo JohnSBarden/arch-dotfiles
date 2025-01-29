@@ -110,7 +110,6 @@ export VISUAL=vim
 export EDITOR="$VISUAL"
 
 # configure browser
-# TODO - Allow to be configurable on darwin/osx?
 #export BROWSER="firefox"
 export BROWSER="zen-browser"
 export PATH=$PATH:/Applications/Firefox.app/Contents/MacOS/firefox-bin
@@ -154,18 +153,6 @@ export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:/usr/bi
 
 ## thefuck
 # eval $(thefuck --alias)
-
-#### MANAGED BY C2FO ####
-# Shortcut to C2FO ZSH Config
-# export C2FO_ZSH=$HOME/.c2fo
-
-# Overrides for Colima
-# export DOCKER_HOST="unix:///Users/$USERNAME/.colima/docker.sock"
-
-# source $C2FO_ZSH/zsh/c2fo.zsh
-# source $C2FO_ZSH/zsh/fnm.zsh
-
-#### END MANAGED BY C2FO ####
 
 # fnm
 export PATH="/Users/jbarden/Library/Application Support/fnm:$PATH"
