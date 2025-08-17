@@ -110,7 +110,6 @@ export VISUAL=vim
 export EDITOR="$VISUAL"
 
 # configure browser
-#export BROWSER="firefox"
 export BROWSER="zen-browser"
 export PATH=$PATH:/Applications/Firefox.app/Contents/MacOS/firefox-bin
 # run this if it stops opening links correctly
