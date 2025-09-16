@@ -1,7 +1,7 @@
 #
 # .zshrc config
 #
-# basic zsh/antigen, vim, golang, nvm, setup
+# basic zsh/antigen, vim, golang, setup
 #
 if [[ -e "${HOME}/.zprofile" ]]; then
   source "${HOME}/.zprofile"
@@ -22,7 +22,7 @@ if [[ -e "${HOME}/.aliases" ]]; then
 fi
 
 #default folder our NVM install goes to
-export NVM_DIR="$HOME/.nvm"
+# export NVM_DIR="$HOME/.nvm"
 
 # Load the oh-my-zsh's library.
 antigen use oh-my-zsh >/dev/null 2>&1
@@ -62,7 +62,7 @@ antigen bundle ahmetb/kubectx >/dev/null 2>&1
 antigen bundle djui/alias-tips >/dev/null 2>&1
 
 # preload nvm for node version management
-antigen bundle lukechilds/zsh-nvm >/dev/null 2>&1
+# antigen bundle lukechilds/zsh-nvm >/dev/null 2>&1
 
 #override ctrl to use peco for fuzzy searching of history
 antigen bundle jimeh/zsh-peco-history >/dev/null 2>&1
@@ -105,11 +105,15 @@ export PATH=$HOME/.cargo/bin:$PATH
 # add yarn to bin
 # export PATH=$PATH:`yarn global bin`
 
+# add asdf shims
+export PATH="${ASDF_DATA_DIR:-$HOME/.asdf}/shims:$PATH"
+
 # configure editors
 export VISUAL=vim
 export EDITOR="$VISUAL"
 
 # configure browser
+#export BROWSER="firefox"
 export BROWSER="zen-browser"
 export PATH=$PATH:/Applications/Firefox.app/Contents/MacOS/firefox-bin
 # run this if it stops opening links correctly
@@ -120,11 +124,6 @@ export PATH=$PATH:/Applications/Firefox.app/Contents/MacOS/firefox-bin
 # add krew
 export PATH="${KREW_ROOT:-$HOME/.krew}/bin:$PATH"
 
-# work variables
-## source ~/.agisuretrack
-export DEV_HOST=dev0.intellifarms.com
-
-export CLI_CP_SSH_USER=jbarden
 export PATH="$HOME/.config/yarn/global/node_modules/.bin:$PATH"
 
 ## manage keys
