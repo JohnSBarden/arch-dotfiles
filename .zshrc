@@ -1,7 +1,6 @@
-#
 # .zshrc config
 #
-# basic zsh/antigen, vim, golang, setup
+# basic zsh/antigen, vim, golang, nvm, setup
 #
 if [[ -e "${HOME}/.zprofile" ]]; then
   source "${HOME}/.zprofile"
@@ -22,7 +21,7 @@ if [[ -e "${HOME}/.aliases" ]]; then
 fi
 
 #default folder our NVM install goes to
-# export NVM_DIR="$HOME/.nvm"
+export NVM_DIR="$HOME/.nvm"
 
 # Load the oh-my-zsh's library.
 antigen use oh-my-zsh >/dev/null 2>&1
@@ -62,7 +61,7 @@ antigen bundle ahmetb/kubectx >/dev/null 2>&1
 antigen bundle djui/alias-tips >/dev/null 2>&1
 
 # preload nvm for node version management
-# antigen bundle lukechilds/zsh-nvm >/dev/null 2>&1
+antigen bundle lukechilds/zsh-nvm >/dev/null 2>&1
 
 #override ctrl to use peco for fuzzy searching of history
 antigen bundle jimeh/zsh-peco-history >/dev/null 2>&1
@@ -113,7 +112,6 @@ export VISUAL=vim
 export EDITOR="$VISUAL"
 
 # configure browser
-#export BROWSER="firefox"
 export BROWSER="zen-browser"
 export PATH=$PATH:/Applications/Firefox.app/Contents/MacOS/firefox-bin
 # run this if it stops opening links correctly
@@ -185,3 +183,4 @@ export PATH=$PATH:/home/johnny/.spicetify
 # Created by `pipx` on 2024-08-01 03:10:34
 export PATH="$PATH:/home/johnny/.local/bin"
 alias dotfiles=/usr/bin/git --git-dir=$HOME/workspace/arch-dotfiles --work-tree=$HOME
+
