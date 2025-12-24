@@ -30,15 +30,15 @@
     "locale",
     "break",
     "colors"
-  ],
-  "logo": {
-    "source": "~/Pictures/planeswalker.png",
-    "type": "chafa",
-    "height": 15,
-    "width": 15,
-    "padding": {
-      "top": 5,
-      "left": 5
-    }
-  }
+  ]
+  // "logo": {
+  //   "source": "~/Pictures/planeswalker.png",
+  //   "type": "chafa",
+  //   "height": 15,
+  //   "width": 15,
+  //   "padding": {
+  //     "top": 5,
+  //     "left": 5
+  //   }
+  // }
 }

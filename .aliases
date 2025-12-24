@@ -138,3 +138,5 @@ export PATH="$HOME:~/go/bin:$PATH"
 #}
 #add-zsh-hook chpwd load-nvmrc
 #load-nvmrc
+#
+alias deadlog='journalctl --user -u deadlock-api-ingest -f'
