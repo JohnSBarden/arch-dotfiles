@@ -1,0 +1,209 @@
+/*
+
+██╗    ██╗ █████╗ ██╗   ██╗██████╗  █████╗ ██████╗ 
+██║    ██║██╔══██╗╚██╗ ██╔╝██╔══██╗██╔══██╗██╔══██╗
+██║ █╗ ██║███████║ ╚████╔╝ ██████╔╝███████║██████╔╝
+██║███╗██║██╔══██║  ╚██╔╝  ██╔══██╗██╔══██║██╔══██╗
+╚███╔███╔╝██║  ██║   ██║   ██████╔╝██║  ██║██║  ██║
+ ╚══╝╚══╝ ╚═╝  ╚═╝   ╚═╝   ╚═════╝ ╚═╝  ╚═╝╚═╝  ╚═╝
+
+Waybar Config File by Arfan Zubi
+
+*/
+
+/* 
+* {
+    font-family: 'FiraCode Nerd Font', sans-serif;
+    font-size: 12px;
+    min-height: 0;
+}
+
+window#waybar {
+    background: rgba(45, 53, 59, 0.9);
+    border: 2px solid rgba(61, 72, 77, 0.9);
+    color: #D3C6AA;
+}
+
+#window, #clock, #system, #keyboard, #hardware {
+    margin: 5px;
+    padding: 0 5px;
+    background-color: #272E33;
+    border: 2px solid #3D484D;
+    border-radius: 15px;
+}
+
+#window {
+    font-weight: bold;
+}
+
+#clock {
+    background-color: #A7C080;
+    border: 2px solid #2D353B;
+    color: #2D353B;
+    font-weight: bold;
+}
+
+#workspaces {
+    margin-right: 10px;
+    font-weight: bold;
+}
+
+#workspaces button {
+    border: none;
+    border-radius: 0;
+    color: #D3C6AA;
+    transition: all 0.3s ease-in-out;
+}
+
+#workspaces button.active {
+    background-color: #A7C080;
+    color: #2D353B;
+    transition: all 0.3s ease-in-out;
+}
+
+#workspaces button.focused {
+    background-color: #A7C080;
+}
+
+#workspaces button:hover {
+    box-shadow: inherit;
+    text-shadow: inherit;
+    background: #3D484D;
+    border: none;
+    color: #D3C6AA;
+}
+
+#keyboard-state {
+    margin-right: 7px;
+}
+
+#custom-wlogout {
+    margin-left: 7px;
+    padding: 0 15px;
+    background-color: #A7C080;
+    color: #2D353B;
+} */
+
+/**
+ * ════════════════════════════════════════════════════════
+ *   Symphony by https://github.com/vyrx-dev
+ * ════════════════════════════════════════════════════════
+ */
+
+ @import "./colors.css";
+
+ * {
+   background-color: transparent;
+   color: @on_background;
+   border: none;
+   border-radius: 0;
+   font-family: 'CaskaydiaMono Nerd Font Propo';
+   font-size: 13px;
+ }
+ 
+ tooltip {
+   background: rgba(15, 15, 15, 0.95);
+   border: 1px solid rgba(255, 255, 255, 0.08);
+   border-radius: 4px;
+   padding: 6px 10px;
+ }
+ 
+ menu {
+   background: rgba(20, 20, 20, 0.95);
+   border: 1px solid rgba(255, 255, 255, 0.1);
+   border-radius: 0px;
+   padding: 4px;
+ }
+ 
+ menu menuitem:hover {
+   background: rgba(255, 255, 255, 0.1);
+ }
+ 
+ window#waybar {
+   background: rgba(16, 16, 16, 0.75);
+ }
+ 
+ .modules-center {
+   border-radius: 0;
+   padding: 0 80px;
+ }
+ 
+ #workspaces button {
+   all: initial;
+   padding: 0 5px;
+   margin: 0 0px;
+   min-width: 5px;
+ }
+ 
+ #workspaces button.active {
+   background: @primary;
+   color: @on_primary;
+   font-weight: 700;
+ }
+ 
+ #workspaces button.empty {
+   opacity: 0.5;
+ }
+ 
+ #workspaces button:hover {
+   background: rgba(255, 255, 255, 0.15);
+   border-radius: 0px;
+ }
+ 
+ #mpd {
+   margin-right: 5px;
+   font-weight: 600;
+ }
+ 
+ #cpu,
+ #disk,
+ #memory,
+ #battery,
+ #network,
+ #clock,
+ #bluetooth,
+ #pulseaudio,
+ #backlight,
+ #window,
+ #hyprland-language,
+ #keyboard-state,
+ #mpris,
+ #tray,
+ #custom-screenrecording-indicator,
+ #custom-idle-indicator {
+     padding: 0 5px;
+     font-weight: 600;
+     border-left: 1px solid @outline_variant;
+ }
+
+ /* accent color for module icons/labels */
+ #window,
+ #backlight,
+ #pulseaudio,
+ #network,
+ #hyprland-language,
+ #keyboard-state,
+ #disk,
+ #cpu,
+ #memory {
+     color: @primary;
+ }
+ 
+ #custom-screenrecording-indicator {
+   min-width: 12px;
+   margin-top: 2px;
+   margin-left: 8.75px;
+   font-size: 13px;
+ }
+ 
+ #custom-logo {
+   padding: 0 6px;
+   font-size: 15px;
+   background: @primary;
+   color: @on_primary;
+ }
+ 
+ #custom-screenrecording-indicator.active {
+   color: #a55555;
+ }
+ 

@@ -1,0 +1,26 @@
+# Ghostty Configuration
+# Main config file - place in ~/.config/ghostty/config
+
+# Font configuration
+font-family = FiraCode Nerd Font
+font-size = 10
+
+# Window appearance
+window-theme = auto
+background-opacity = 0.9
+
+# Theme - Everforest Dark (default)
+# To switch themes, change this line or use keybinds
+theme = everforest-dark
+
+# Performance
+shell-integration = detect
+shell-integration-features = cursor,sudo,title
+
+# initial-window = false
+confirm-close-surface = false
+quit-after-last-window-closed = true
+clipboard-read = allow
+clipboard-write = allow
+copy-on-select = false
+window-subtitle = working-directory

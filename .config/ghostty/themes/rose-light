@@ -1,0 +1,35 @@
+# Rose Light Theme
+# Complementary light version
+# Place in ~/.config/ghostty/themes/rose-light
+
+# Background and foreground (inverted concept)
+background = ffeeed
+foreground = 31515f
+
+# Cursor
+cursor-color = c95153
+cursor-text = ffeeed
+
+# Selection
+selection-background = f4b3af
+selection-foreground = 31515f
+
+# Normal colors
+palette = 0=31515f
+palette = 1=c95153
+palette = 2=415161
+palette = 3=e2787a
+palette = 4=68888f
+palette = 5=f4b3af
+palette = 6=78989f
+palette = 7=ffeeed
+
+# Bright colors
+palette = 8=68888f
+palette = 9=e2787a
+palette = 10=516171
+palette = 11=f4b3af
+palette = 12=78989f
+palette = 13=ffc3bf
+palette = 14=88a8af
+palette = 15=ffffff

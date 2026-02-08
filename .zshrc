@@ -112,7 +112,7 @@ export VISUAL=vim
 export EDITOR="$VISUAL"
 
 # configure browser
-export BROWSER="zen-browser"
+export BROWSER="zen"
 export PATH=$PATH:/Applications/Firefox.app/Contents/MacOS/firefox-bin
 # run this if it stops opening links correctly
 #$ xdg-mime default zen-alpha.desktop x-scheme-handler/https x-scheme-handler/http
@@ -184,3 +184,4 @@ export PATH=$PATH:/home/johnny/.spicetify
 export PATH="$PATH:/home/johnny/.local/bin"
 alias dotfiles=/usr/bin/git --git-dir=$HOME/workspace/arch-dotfiles --work-tree=$HOME
 
+export RANGER_LOAD_DEFAULT_RC=false

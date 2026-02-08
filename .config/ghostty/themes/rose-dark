@@ -1,0 +1,31 @@
+# Background and foreground (dark teal + light rose)
+background = 3e616c
+foreground = eca8a5
+
+# Cursor (bright coral rose)
+cursor-color = eca8a5
+cursor-text = 3e616c
+
+# Selection (mid teal background with pink text)
+selection-background = 527580
+selection-foreground = eca8a5
+
+# Normal colors
+palette = 0=2a4850    # Black - darker teal
+palette = 1=d68a87    # Red - dusty rose
+palette = 2=6a8f8f    # Green - muted teal-green
+palette = 3=eca8a5    # Yellow - light pink
+palette = 4=527580    # Blue - mid teal
+palette = 5=b5888c    # Magenta - mauve/dusty pink
+palette = 6=6ea5a5    # Cyan - teal-cyan
+palette = 7=e0c5c3    # White - pale rose
+
+# Bright colors
+palette = 8=3e616c     # Bright Black - main teal
+palette = 9=f5b5b2     # Bright Red - bright rose
+palette = 10=7fa5a5    # Bright Green - bright teal
+palette = 11=ffc8c5    # Bright Yellow - peachy pink
+palette = 12=6a8f9f    # Bright Blue - blue-teal
+palette = 13=d4a5aa    # Bright Magenta - pink-mauve
+palette = 14=8fbfbf    # Bright Cyan - bright teal-cyan
+palette = 15=fff0ee    # Bright White - very pale pink

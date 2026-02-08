@@ -1,0 +1,6 @@
+{
+  "browser": "zen-browser",
+  "editor": "code",
+  "filemanager": "dolphin",
+  "terminal": "ghostty"
+}

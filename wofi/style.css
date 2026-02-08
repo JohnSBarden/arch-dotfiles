@@ -1,8 +1,4 @@
-/* Everforest */
-@define-color accent #A7C080;
-@define-color txt #D3C6AA;
-@define-color bg #2B3339;
-@define-color bg2 #333C43;
+@import url("file:///home/johnny/.config/waybar/colors.css");
 
  * {
     font-family: 'CaskaydiaCove Nerd Font mono';
@@ -13,9 +9,9 @@
  window {
     margin: 0px;
     padding: 10px;
-    border: 3px solid @accent;
+    border: 3px solid @primary;
     /* border-radius: 7px; */
-    background-color: @bg;
+    background-color: @background;
     animation: slideIn 0.5s ease-in-out both;
  }
 
@@ -35,7 +31,7 @@
     margin: 5px;
     padding: 10px;
     border: none;
-    background-color: @bg;
+    background-color: @background;
     animation: fadeIn 0.5s ease-in-out both;
  }
 
@@ -55,7 +51,7 @@
     margin: 5px;
     padding: 10px;
     border: none;
-    background-color: @bg;
+    background-color: @background;
  }
 
  /* Scroll */
@@ -70,8 +66,8 @@
     margin: 5px;
     padding: 10px;
     border: none;
-    color: @accent;
-    background-color: @bg2;
+    color: @primary;
+    background-color: @surface_container;
     animation: fadeIn 0.5s ease-in-out both;
  }
 
@@ -80,15 +76,15 @@
     margin: 5px;
     padding: 10px;
     border: none;
-    color: @txt;
+    color: @on_background;
     animation: fadeIn 0.5s ease-in-out both;
  }
 
  /* Selected Entry */
  #entry:selected {
-   background-color: @accent;
+   background-color: @primary;
  }
 
  #entry:selected #text {
-    color: @bg;
+    color: @background;
  }

@@ -295,23 +295,23 @@
 [urgency_low]
     # IMPORTANT: colors have to be defined in quotation marks.
     # Otherwise the "#" and following would be interpreted as a comment.
-    background = "#a7c080"
-    foreground = "#272e33"
+    background = "#241f17"
+    foreground = "#ede1d4"
     timeout = 5
     # Icon for notifications with low urgency, uncomment to enable
     icon = /usr/share/icons/Qogir/16/status/package-installed-outdated.svg
 
 [urgency_normal]
-    background = "#a7c080"
-    foreground = "#272e33"
+    background = "#241f17"
+    foreground = "#ede1d4"
     timeout = 5
     # Icon for notifications with normal urgency, uncomment to enable
     icon = /usr/share/icons/Qogir/16/emblems/emblem-question.svg
 
 [urgency_critical]
-    background = "#d699b6"
-    foreground = "#475258"
-    frame_color = "#e67e80"
+    background = "#93000a"
+    foreground = "#ffdad6"
+    frame_color = "#ffb4ab"
     timeout = 60
     # Icon for notifications with critical urgency, uncomment to enable
     icon = /usr/share/icons/Qogir/16/actions/dialog-warning.svg
