@@ -1,6 +1,10 @@
-@import url("file:///home/johnny/.config/waybar/colors.css");
+/* Generated from pywal */
+@define-color background #171d0c;
+@define-color on_background #c5c6c2;
+@define-color primary #E9AFB8;
+@define-color surface_container #69705c;
 
- * {
+* {
     font-family: 'CaskaydiaCove Nerd Font mono';
     font-size: 14px;
  }
