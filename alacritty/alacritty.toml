@@ -1,0 +1,18 @@
+import = [
+  "/usr/lib/node_modules/alacritty-themes/themes/3024.dark.toml"
+]
+
+[font]
+size = 10
+
+  [font.bold]
+  family = "FiraCode Nerd Font"
+
+  [font.italic]
+  family = "FiraCode Nerd Font"
+
+  [font.normal]
+  family = "FiraCode Nerd Font"
+
+[window]
+opacity = 0.9
