@@ -323,7 +323,7 @@ async def main():
     hyprpaper_tpl = settings['hyprpaper-tpl']
 
     new_wallpaper = f"{HOME}/dotfiles/wallpapers/default.png"
-    wallpaper_dir = f"{HOME}/wallpaper/pastel"
+    wallpaper_dir = f"{HOME}/wallpaper/active"
 
     if random:
         files = [f for f in os.listdir(wallpaper_dir) if f.endswith(('.png', '.jpg', '.jpeg'))]
