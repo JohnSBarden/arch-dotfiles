@@ -8,10 +8,10 @@ font-size = 10
 # Window appearance
 window-theme = auto
 background-opacity = 0.9
+window-inherit-working-directory = false
 
-# Theme - Everforest Dark (default)
-# To switch themes, change this line or use keybinds
-theme = everforest-dark
+# Theme from pywal (updates with wallpaper)
+config-file = ~/.cache/wal/ghostty.conf
 
 # Performance
 shell-integration = detect

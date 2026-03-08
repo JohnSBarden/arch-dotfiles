@@ -1,0 +1,3 @@
+#!/bin/bash
+
+hyprctl dispatch exec "[float;center;size 1220 780] ghostty -e sh -lc 'lsblk -e7 -o NAME,SIZE,FSTYPE,FSUSE%,MOUNTPOINTS,MODEL; echo; df -hT -x tmpfs -x devtmpfs; echo; read -n 1 -s -r -p \"Press any key to close...\"'"

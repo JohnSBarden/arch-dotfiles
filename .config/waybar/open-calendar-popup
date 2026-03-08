@@ -1,0 +1,54 @@
+#!/bin/bash
+set -euo pipefail
+
+# Toggle behavior: if an existing popup is open, close it.
+if pgrep -f "yad.*--title=waybar-calendar-popup" >/dev/null 2>&1; then
+  pkill -f "yad.*--title=waybar-calendar-popup" >/dev/null 2>&1 || true
+  exit 0
+fi
+
+# Position under the top bar with a small gap, centered on focused monitor.
+BAR_HEIGHT=26
+GAP=8
+WIDTH=360
+HEIGHT=300
+
+read -r MON_X MON_Y MON_W <<< "$(hyprctl monitors -j | jq -r '.[] | select(.focused==true) | "\(.x) \(.y) \(.width)"' | head -n1)"
+
+if [ -z "${MON_X:-}" ] || [ -z "${MON_Y:-}" ] || [ -z "${MON_W:-}" ]; then
+  MON_X=0
+  MON_Y=0
+  MON_W=1920
+fi
+
+POS_X=$(( MON_X + (MON_W - WIDTH) / 2 ))
+POS_Y=$(( MON_Y + BAR_HEIGHT + GAP ))
+
+yad \
+  --calendar \
+  --title=waybar-calendar-popup \
+  --undecorated \
+  --skip-taskbar \
+  --fixed \
+  --close-on-unfocus \
+  --no-buttons \
+  --posx="$POS_X" \
+  --posy="$POS_Y" \
+  --width="$WIDTH" \
+  --height="$HEIGHT" &
+
+YAD_PID=$!
+
+# Hyprland has a global "center all floating windows" rule in this setup.
+# Move/resize after map so the popup sits just below Waybar.
+for _ in $(seq 1 20); do
+  ADDR="$(hyprctl clients -j | jq -r --arg pid "$YAD_PID" '.[] | select((.pid|tostring)==$pid and .title=="waybar-calendar-popup") | .address' | head -n1)"
+  if [ -n "$ADDR" ] && [ "$ADDR" != "null" ]; then
+    hyprctl dispatch movewindowpixel "exact $POS_X $POS_Y,address:$ADDR" >/dev/null 2>&1 || true
+    hyprctl dispatch resizewindowpixel "exact $WIDTH $HEIGHT,address:$ADDR" >/dev/null 2>&1 || true
+    break
+  fi
+  sleep 0.05
+done
+
+wait "$YAD_PID"

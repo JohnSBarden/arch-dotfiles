@@ -23,7 +23,8 @@
   },
   "clock": {
     "format": "{:%a %b %d %Y - %I:%M}",
-    "format-alt": "{:%r}"
+    "on-click": "~/.config/waybar/open-calendar-popup",
+    "tooltip": false
   },
   "backlight": {
     "device": "intel_backlight",
@@ -69,13 +70,26 @@
   "disk": {
     "interval": 30,
     "format": "/ {percentage_used}%",
-    "path": "/"
+    "path": "/",
+    "on-click": "~/.config/waybar/open-home-float",
+    "tooltip-format": "{path}: {used}/{total} ({percentage_used}%)"
   },
   "cpu": {
-    "format": "CPU {usage}%"
+    "format": "CPU {usage}%",
+    "on-click": "~/.config/waybar/open-btop-float",
+    "tooltip": true
   },
   "memory": {
-    "format": "RAM {}%"
+    "format": "RAM {}%",
+    "on-click": "~/.config/waybar/open-btop-float",
+    "tooltip": true
+  },
+  "custom/nightlight": {
+    "format": "{}",
+    "exec": "~/.config/waybar/indicator-nightlight",
+    "interval": 10,
+    "return-type": "json",
+    "on-click": "~/.config/waybar/toggle-nightlight"
   },
   "custom/wlogout": {
     "format": "⏻",

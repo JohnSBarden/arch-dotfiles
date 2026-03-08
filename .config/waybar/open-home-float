@@ -1,0 +1,5 @@
+#!/bin/bash
+
+# Open home directory in Nautilus as a centered floating window.
+hyprctl dispatch exec "[float;center;size 1320 860] nautilus --new-window \"$HOME\""
+

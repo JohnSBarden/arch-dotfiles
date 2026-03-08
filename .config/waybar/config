@@ -10,7 +10,7 @@
 
 {
     "layer": "top",
-    "height": 20,
+    "height": 26,
 
     "include": ["$HOME/.config/waybar/modules.json"],
 
@@ -38,6 +38,7 @@
     "group/hardware": {
         "orientation": "horizontal",
         "modules": [
+            "custom/nightlight",
             "pulseaudio",
             "disk",
             "cpu",

@@ -1,0 +1,24 @@
+#!/bin/bash
+
+if ! pgrep -x hyprsunset >/dev/null; then
+  echo '{"text":"󰌶","tooltip":"Nightlight: hyprsunset not running","class":"off"}'
+  exit 0
+fi
+
+output="$(hyprctl hyprsunset temperature 2>&1)"
+if printf '%s\n' "$output" | grep -qiE "couldn.t connect|error|failed"; then
+  echo '{"text":"󰌶","tooltip":"Nightlight: unknown state","class":"off"}'
+  exit 0
+fi
+
+temp="$(printf '%s\n' "$output" | grep -oE '[0-9]+' | head -n1)"
+if [ -z "$temp" ] || [ "$temp" -lt 1000 ] || [ "$temp" -gt 10000 ]; then
+  echo '{"text":"󰌶","tooltip":"Nightlight: invalid temperature","class":"off"}'
+  exit 0
+fi
+
+if [ "$temp" -lt 5900 ]; then
+  echo "{\"text\":\"󰌵\",\"tooltip\":\"Nightlight: On (${temp}K)\",\"class\":\"active\"}"
+else
+  echo "{\"text\":\"󰌶\",\"tooltip\":\"Nightlight: Day (${temp}K)\",\"class\":\"off\"}"
+fi

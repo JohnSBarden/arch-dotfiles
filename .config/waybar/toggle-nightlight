@@ -1,0 +1,28 @@
+#!/bin/bash
+
+ON_TEMP=4000
+OFF_TEMP=6000
+
+if ! pgrep -x hyprsunset >/dev/null; then
+  setsid hyprsunset >/dev/null 2>&1 &
+  sleep 0.5
+fi
+
+output="$(hyprctl hyprsunset temperature 2>&1)"
+if printf '%s\n' "$output" | grep -qiE "couldn.t connect|error|failed"; then
+  current="$OFF_TEMP"
+else
+  current="$(printf '%s\n' "$output" | grep -oE '[0-9]+' | head -n1)"
+fi
+
+if [ "$current" = "$OFF_TEMP" ]; then
+  hyprctl hyprsunset temperature "$ON_TEMP" >/dev/null 2>&1
+  notify-send "Nightlight On" "Screen set to ${ON_TEMP}K"
+else
+  hyprctl hyprsunset temperature "$OFF_TEMP" >/dev/null 2>&1
+  notify-send "Nightlight Off" "Screen set to ${OFF_TEMP}K"
+fi
+
+# Trigger module refresh quickly
+pkill -RTMIN+10 waybar >/dev/null 2>&1 || true
+
