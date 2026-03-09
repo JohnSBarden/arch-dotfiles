@@ -131,30 +131,6 @@ export PATH="$HOME/.config/yarn/global/node_modules/.bin:$PATH"
 # eval `keychain --eval id_ed25519_work`
 #eval `keychain -l`
 
-## Aliases
-alias theme='alacritty-themes'
-alias gfrbm='gfo master:master && grbm'
-alias flushall='cli exec redis /usr/local/bin/redis-cli FLUSHALL'
-alias yys='yarn && yarn start'
-alias yyb='yarn && yarn build'
-alias push='yarn build && yalc push'
-alias ywba='ENABLE_BUNDLE_ANALYZER=true yarn start'
-
-# Stage all files, commit them with a message, and then push
-gcmp() {
-  git add . && git commit -m "$@" && git push
-}
-
-export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:/usr/bin/php:$PATH"
-
-## thefuck
-# eval $(thefuck --alias)
-
-# fnm
-export PATH="/Users/jbarden/Library/Application Support/fnm:$PATH"
-eval "$(fnm env)"
-
-export PATH="$HOME:~/go/bin:$PATH"
 
 # place this after nvm initialization!
 autoload -U add-zsh-hook
