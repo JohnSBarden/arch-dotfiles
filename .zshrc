@@ -124,13 +124,6 @@ export PATH="${KREW_ROOT:-$HOME/.krew}/bin:$PATH"
 
 export PATH="$HOME/.config/yarn/global/node_modules/.bin:$PATH"
 
-## manage keys
-# eval `ssh-agent -s`
-# eval `keychain --eval id_ed25519`
-# eval `keychain --eval ~/.ssh/personal/id_ed25519`
-# eval `keychain --eval id_ed25519_work`
-#eval `keychain -l`
-
 
 # place this after nvm initialization!
 autoload -U add-zsh-hook
@@ -154,10 +147,10 @@ load-nvmrc() {
 add-zsh-hook chpwd load-nvmrc
 load-nvmrc
 
-export PATH=$PATH:/home/johnny/.spicetify
+export PATH=$PATH:$HOME/.spicetify
 
 # Created by `pipx` on 2024-08-01 03:10:34
-export PATH="$PATH:/home/johnny/.local/bin"
+export PATH="$PATH:$HOME/.local/bin"
 alias dotfiles=/usr/bin/git --git-dir=$HOME/workspace/arch-dotfiles --work-tree=$HOME
 
 export RANGER_LOAD_DEFAULT_RC=false

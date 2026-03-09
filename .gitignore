@@ -1,5 +1,11 @@
 # Python cache
 pywalfox-override/pywalfox*/__pycache__*
+__pycache__/
+*.pyc
+*.pyo
+
+# PulseAudio auth cookie (machine secret — never commit)
+pulse/cookie
 
 # Backup files
 *.bak
@@ -15,9 +21,12 @@ __pycache__/
 .cache/
 *.cache/
 
-# IDE files
-.vscode/settings.json
+# IDE / editor local state
+.vscode/
 .idea/
+.claude/
+.windsurf/
+.cursor/
 
 # OS generated files
 .DS_Store
