@@ -7,6 +7,12 @@ __pycache__/
 # PulseAudio auth cookie (machine secret — never commit)
 pulse/cookie
 
+# Pywal-generated color outputs (regenerated on every theme change)
+.config/hypr/conf/colors/dynamic.conf
+.config/waybar/colors.css
+wofi/style.css
+dunst/dunstrc
+
 # Backup files
 *.bak
 *~

@@ -1,0 +1,10 @@
+#!/bin/bash
+
+status="$(mullvad status)"
+
+if printf '%s\n' "$status" | grep -q "^Connected"; then
+  server="$(printf '%s\n' "$status" | grep -oP 'Relay:\s*\K[^ ]+')"
+  echo "{\"text\":\"󰌾\",\"tooltip\":\"VPN: Connected to $server\",\"class\":\"connected\"}"
+else
+  echo '{"text":"󰍁","tooltip":"VPN: Disconnected","class":"disconnected"}'
+fi
